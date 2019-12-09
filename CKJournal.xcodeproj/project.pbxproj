@@ -16,6 +16,8 @@
 		AB4D6F0C239EE10900EDB9B8 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6F0B239EE10900EDB9B8 /* Entry.swift */; };
 		AB4D6F0E239EEEAB00EDB9B8 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6F0D239EEEAB00EDB9B8 /* EntryController.swift */; };
 		AB4D6F11239EF24700EDB9B8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6F10239EF24700EDB9B8 /* DateExtension.swift */; };
+		AB4D6F13239EF59100EDB9B8 /* EntryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6F12239EF59100EDB9B8 /* EntryListTableViewController.swift */; };
+		AB4D6F15239EF5B500EDB9B8 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6F14239EF5B500EDB9B8 /* EntryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		AB4D6F0B239EE10900EDB9B8 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		AB4D6F0D239EEEAB00EDB9B8 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 		AB4D6F10239EF24700EDB9B8 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		AB4D6F12239EF59100EDB9B8 /* EntryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListTableViewController.swift; sourceTree = "<group>"; };
+		AB4D6F14239EF5B500EDB9B8 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 		AB4D6F08239EE0C600EDB9B8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB4D6F12239EF59100EDB9B8 /* EntryListTableViewController.swift */,
+				AB4D6F14239EF5B500EDB9B8 /* EntryDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -224,8 +230,10 @@
 			files = (
 				AB4D6F0C239EE10900EDB9B8 /* Entry.swift in Sources */,
 				AB4D6F11239EF24700EDB9B8 /* DateExtension.swift in Sources */,
+				AB4D6F13239EF59100EDB9B8 /* EntryListTableViewController.swift in Sources */,
 				AB4D6EED239EE06000EDB9B8 /* AppDelegate.swift in Sources */,
 				AB4D6F0E239EEEAB00EDB9B8 /* EntryController.swift in Sources */,
+				AB4D6F15239EF5B500EDB9B8 /* EntryDetailViewController.swift in Sources */,
 				AB4D6EEF239EE06000EDB9B8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
