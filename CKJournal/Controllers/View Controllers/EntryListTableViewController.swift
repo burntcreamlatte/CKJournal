@@ -12,6 +12,11 @@ class EntryListTableViewController: UITableViewController {
 
     // MARK: - Lifecycle Methods
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,5 +55,12 @@ class EntryListTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //iidoo
+        if segue.identifier == "toEditEntry" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            if let destinationVC = segue.destination as? EntryDetailViewController {
+                let entry = EntryController.shared.entries[indexPath.row]
+                destinationVC.entry = entry
+            }
+        }
     }
 }

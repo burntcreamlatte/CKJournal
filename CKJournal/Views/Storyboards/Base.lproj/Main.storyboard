@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iva-0z-PuO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Entry List Table View Controller-->
         <scene sceneID="69W-bo-psg">
             <objects>
-                <tableViewController id="lJf-uy-l2c" sceneMemberID="viewController">
+                <tableViewController id="lJf-uy-l2c" customClass="EntryListTableViewController" customModule="CKJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WPR-FG-Yfj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="fbG-Cg-dGP" kind="show" id="NEh-Qz-wcG"/>
+                                    <segue destination="fbG-Cg-dGP" kind="show" identifier="toEditEntry" id="NEh-Qz-wcG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" id="5HB-WB-GJy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FHA-CU-ijt">
                             <connections>
-                                <segue destination="fbG-Cg-dGP" kind="show" id="ogW-8F-4pq"/>
+                                <segue destination="fbG-Cg-dGP" kind="show" identifier="toAddEntry" id="ogW-8F-4pq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -61,23 +61,78 @@
             </objects>
             <point key="canvasLocation" x="1118.840579710145" y="170.75892857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Entry Detail View Controller-->
         <scene sceneID="syg-TF-03T">
             <objects>
-                <viewController id="fbG-Cg-dGP" sceneMemberID="viewController">
+                <viewController id="fbG-Cg-dGP" customClass="EntryDetailViewController" customModule="CKJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KXb-f4-d1D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elu-2L-neb">
+                                <rect key="frame" x="52" y="297" width="310.5" height="356"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf2-Kz-byL">
+                                <rect key="frame" x="103.5" y="753" width="207" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Clear Text">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearTextButtonTapped:" destination="fbG-Cg-dGP" eventType="touchUpInside" id="N8H-rL-xHu"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fill out your entry..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nsu-dW-LvP">
+                                <rect key="frame" x="52" y="163" width="310.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.5994873046875" green="0.83127099275588989" blue="0.91913098096847534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="elu-2L-neb" firstAttribute="leading" secondItem="Nsu-dW-LvP" secondAttribute="leading" id="FDT-AO-XEA"/>
+                            <constraint firstItem="yf2-Kz-byL" firstAttribute="width" secondItem="KXb-f4-d1D" secondAttribute="width" multiplier="0.5" id="Gz2-Q4-oya"/>
+                            <constraint firstItem="elu-2L-neb" firstAttribute="trailing" secondItem="Nsu-dW-LvP" secondAttribute="trailing" id="HAv-cb-INH"/>
+                            <constraint firstItem="elu-2L-neb" firstAttribute="centerX" secondItem="Nsu-dW-LvP" secondAttribute="centerX" id="L4B-fd-Orp"/>
+                            <constraint firstItem="Nsu-dW-LvP" firstAttribute="width" secondItem="KXb-f4-d1D" secondAttribute="width" multiplier="0.75" id="WMA-PW-etn"/>
+                            <constraint firstItem="Nsu-dW-LvP" firstAttribute="top" secondItem="TDL-hw-Ne2" secondAttribute="top" constant="75" id="bma-oC-G4E"/>
+                            <constraint firstItem="yf2-Kz-byL" firstAttribute="top" secondItem="elu-2L-neb" secondAttribute="bottom" constant="100" id="dNO-Rh-sPo"/>
+                            <constraint firstItem="Nsu-dW-LvP" firstAttribute="centerX" secondItem="TDL-hw-Ne2" secondAttribute="centerX" id="e5M-7S-hyc"/>
+                            <constraint firstItem="yf2-Kz-byL" firstAttribute="centerX" secondItem="TDL-hw-Ne2" secondAttribute="centerX" id="rL1-mN-Tx5"/>
+                            <constraint firstItem="elu-2L-neb" firstAttribute="top" secondItem="Nsu-dW-LvP" secondAttribute="bottom" constant="100" id="wDL-40-1cN"/>
+                            <constraint firstItem="elu-2L-neb" firstAttribute="centerY" secondItem="TDL-hw-Ne2" secondAttribute="centerY" id="wGW-Ze-8oB"/>
+                            <constraint firstItem="elu-2L-neb" firstAttribute="centerX" secondItem="yf2-Kz-byL" secondAttribute="centerX" id="x4o-9N-kQT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TDL-hw-Ne2"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="wQi-qQ-o7g" appends="YES" id="gD3-tr-wSy"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Kay-X4-czp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="I7q-V5-Bdd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="I7q-V5-Bdd">
+                            <connections>
+                                <action selector="saveEntryButtonTapped:" destination="fbG-Cg-dGP" id="qY6-tO-NZN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="entryBodyTextView" destination="elu-2L-neb" id="l5j-tl-1cL"/>
+                        <outlet property="entryTextField" destination="Nsu-dW-LvP" id="T91-C9-Jo2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxh-pI-DfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wQi-qQ-o7g">
+                    <connections>
+                        <action selector="mainViewTapped:" destination="fbG-Cg-dGP" id="1BK-MN-KAA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2042" y="171"/>
+            <point key="canvasLocation" x="2040.5797101449277" y="170.75892857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KNB-MO-FKU">
@@ -87,6 +142,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wMw-yv-7LS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -99,6 +155,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NEh-Qz-wcG"/>
+        <segue reference="ogW-8F-4pq"/>
     </inferredMetricsTieBreakers>
 </document>
