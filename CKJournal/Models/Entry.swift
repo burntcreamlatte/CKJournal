@@ -34,7 +34,7 @@ extension Entry {
     convenience init?(ckRecord: CKRecord) {
         guard let title = ckRecord[EntryConstants.TitleKey] as? String, let bodyText = ckRecord[EntryConstants.BodyKey] as? String, let timestamp = ckRecord[EntryConstants.TimestampKey] as? Date else { return nil }
         
-        self.init(title: title, bodyText: bodyText, timestamp: timestamp)
+        self.init(title: title, bodyText: bodyText, timestamp: timestamp, ckRecordID: ckRecord.recordID)
     }
 }
 

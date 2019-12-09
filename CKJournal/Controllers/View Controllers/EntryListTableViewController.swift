@@ -13,7 +13,7 @@ class EntryListTableViewController: UITableViewController {
     // MARK: - Lifecycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     

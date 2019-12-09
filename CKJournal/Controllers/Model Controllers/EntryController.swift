@@ -29,7 +29,7 @@ class EntryController {
             guard let record = record,
                 let entry = Entry(ckRecord: record) else { return completion(false) }
             
-            self.entries.insert(entry, at: 0)
+            self.entries.append(entry)
             print("Entry saved successfully.")
             completion(true)
         }
@@ -38,11 +38,7 @@ class EntryController {
     func addEntryWith(title: String, bodyText: String, completion: @escaping (Bool) -> Void) {
         let entry = Entry(title: title, bodyText: bodyText)
         
-        EntryController.shared.save(entry: entry) { (success) in
-            if success {
-                completion(true)
-            }
-        }
+        EntryController.shared.save(entry: entry, completion: completion)
     }
     
     func fetchEntries(completion: @escaping (Bool) -> Void) {

@@ -55,6 +55,8 @@ class EntryDetailViewController: UIViewController {
     // MARK: - Helper Methods
     func updateViews() {
         DispatchQueue.main.async {
+            self.entryTextField.text = self.entry?.title
+            self.entryBodyTextView.text = self.entry?.bodyText
             self.loadViewIfNeeded()
         }
     }
